@@ -1,14 +1,30 @@
+import { useEffect, useState } from "react"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
 import SideBar from "./components/SideBar"
 
 const App = () => {
+  const NASA_KEY = import.meta.env.VITE_NASA_API_KEY
+  const[showModal, setShowModal] = useState(false)
+
+  function handleToggleModal(){
+    setShowModal(!showModal)
+  }
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <div>
       
       <Main/>
-      <SideBar>ajajjaj</SideBar>
-      <Footer/>
+
+      {showModal && (
+        <SideBar handleToggleModal={handleToggleModal}/>
+      )}
+      
+      <Footer handleToggleModal={handleToggleModal}/>
     </div>
   )
 }
